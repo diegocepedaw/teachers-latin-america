@@ -205,6 +205,7 @@
 			 $group_arr[] = $row;
 
 	 }
+	 		echo '<pre>'; print_r($group_arr); echo '</pre>';
 
 	}else{
 	   echo "db connection error because of".mysqli_connect_error();
