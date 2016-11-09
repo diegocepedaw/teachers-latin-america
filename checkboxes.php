@@ -205,7 +205,6 @@
 			 $group_arr[] = $row;
 
 	 }
-	 		echo '<pre>'; print_r($group_arr); echo '</pre>';
 
 	}else{
 	   echo "db connection error because of".mysqli_connect_error();
@@ -215,3 +214,15 @@
 
 
    ?>
+
+<?php if (count($query) > 0): ?>
+<table>
+  <tbody>
+<?php foreach ($query as $row): array_map('htmlentities', $row); ?>
+    <tr>
+      <td><?php echo implode('</td><td>', $row); ?></td>
+    </tr>
+<?php endforeach; ?>
+  </tbody>
+</table>
+<?php endif; ?>
