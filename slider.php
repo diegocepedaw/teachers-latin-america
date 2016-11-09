@@ -16,11 +16,12 @@
            if(isset($_POST['teaching_area_id']) && isset($_POST['grade_level_id'])){
              $chkArrCSV = implode(',',$chkArr);
              $chkArrCSV2 = implode(',',$chkArr2);
-             $query = mysqli_query($connection, "SELECT fname, lname, email, teaching_area_id, grade_level_id
+             $query = mysqli_query($connection, "SELECT fname, lname, email, teaching_area_id, grade_level_id, citizenship, years_of_experience_teaching
                  FROM joblisting_employees
                  INNER JOIN joblisting_candidate_teaching_areas ON joblisting_employees.id = joblisting_candidate_teaching_areas.candidate_id
                  INNER JOIN joblisting_candidate_grade_level ON joblisting_employees.id = joblisting_candidate_grade_level.candidate_id
                  WHERE joblisting_candidate_teaching_areas.teaching_area_id in (".$chkArrCSV .") and joblisting_candidate_grade_level.grade_level_id in (".$chkArrCSV2 .")
+                 GROUP BY email
                  ");
 
        }
@@ -48,6 +49,7 @@
 <body class="no-js">
   <div id="main-slider" class="liquid-slider">
       <?php
+      //create slider divs from result of query
        if(isset($_POST['teaching_area_id']) && isset($_POST['grade_level_id'])){
            while ($row = $query->fetch_assoc()){
            $group_arr[] = $row;
@@ -246,13 +248,14 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.4/jquery.touchSwipe.min.js"></script>
-  <script src="./js/jquery.liquid-slider.min.js"></script>
+  <script src="./src/js/jquery.liquid-slider.js"></script>
   <script>
     /**
      * If you need to access the internal property or methods, use this:
      * var api = $.data( $('#main-slider')[0], 'liquidSlider');
      * console.log(api);
      */
+
     $('#main-slider').liquidSlider();
   </script>
 </footer>

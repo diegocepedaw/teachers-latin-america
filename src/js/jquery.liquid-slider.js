@@ -53,7 +53,7 @@ if (typeof Object.create !== 'function') {
     dynamicArrowRightText: 'right &#187;',
     hideSideArrows: false,
     hideSideArrowsDuration: 750,
-    hoverArrows: true,
+    hoverArrows: false,
     hoverArrowDuration: 250,
 
     dynamicTabs: true,
@@ -68,7 +68,7 @@ if (typeof Object.create !== 'function') {
     hashLinking: false,
     hashTitleSelector: '.title',
 
-    keyboardNavigation: false,
+    keyboardNavigation: true,
     leftKey: 39,
     rightKey: 37,
     panelKeys: {
