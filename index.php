@@ -3,7 +3,7 @@
   <?php
     $host = 'localhost';
     $user = 'root';
-    $password = '';
+    $password = 'password';
     $db ='tla';
 
 
