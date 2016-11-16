@@ -1,17 +1,12 @@
 <!DOCTYPE html>
 
 <?php
-<<<<<<< HEAD
-$host = 'localhost';
-$user = 'root';
-$password = 'password';
-$db ='tla';
-=======
+
+
   $host = 'localhost';
   $user = 'id171775_root';
   $password = 'teach';
   $db ='id171775_tla';
->>>>>>> 861b25b0b7cade60accadfae5cb1f8a420b8a3a7
 
 
 
