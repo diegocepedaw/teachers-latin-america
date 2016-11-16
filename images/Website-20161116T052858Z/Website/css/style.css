@@ -1,0 +1,21 @@
+.full {
+	width: 100%;
+}
+
+.info {
+	margin-top: 20px;
+	width: 100%;
+}
+
+.image {
+	width: 200px;
+	margin-top: 20px;
+}
+
+.top {
+	margin-top: 40px;
+}
+
+.bullet {
+	list-style-type: disc;
+}
