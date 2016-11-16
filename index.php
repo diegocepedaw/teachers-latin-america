@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-
-  <?php
+<?php
     $host = 'localhost';
     $user = 'root';
     $password = '';
@@ -64,7 +62,9 @@
 
   </div>
   <button id="next">next</button>
+  <button id="hide">Show/Hide Form</button>
 
+  <div id="checkBoxes">
   <form name="myForm" action="index.php" method="post">
   <table id="tbTeachingAreas" border="0" width="100%" cellpadding="3" cellspacing="3" class="jl-main-container">		<tbody><tr>					<td>
   				<input class="pointer selectorCheckboxTeachingArea" type="checkbox" id="teaching_area_id_1" name="teaching_area_id[]" value="1">
@@ -242,6 +242,7 @@
 
   			<input type="submit" value="Submit">
   </form>
+</div>
 
 
 
@@ -264,6 +265,11 @@
       dynamicTabs: false
     });
 
+
+    $("#hide").click(function() {
+      $("#checkBoxes").toggle();
+      console.log("Maybe");
+});
 
 
     $("#next").click(function() {
