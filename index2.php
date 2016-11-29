@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 
 <?php
-  $host = 'localhost';
-  $user = 'id171775_root';
-  $password = 'teach';
-  $db ='id171775_tla';
-
+$host = 'localhost';
+$user = 'id171775_root';
+$password = 'teach';
+$db ='id171775_tla';
 
     $connection = mysqli_connect($host,$user,$password,$db);// you can select db separately as you did already
       if($connection){
@@ -15,7 +14,7 @@
            if(isset($_POST['teaching_area_id']) && isset($_POST['grade_level_id'])){
              $chkArrCSV = implode(',',$chkArr);
              $chkArrCSV2 = implode(',',$chkArr2);
-             $query = mysqli_query($connection, "SELECT fname, lname, email, linkedin, teaching_area_id, grade_level_id, citizenship, years_of_experience_teaching, university_college_name, field_of_study
+             $query = mysqli_query($connection, "SELECT fname, lname, email, linkedin, teaching_area_id, grade_level_id, citizenship, years_of_experience_teaching, university_college_name, field_of_study, teaching_certification
                  FROM joblisting_employees
                  INNER JOIN joblisting_candidate_teaching_areas ON joblisting_employees.id = joblisting_candidate_teaching_areas.candidate_id
                  INNER JOIN joblisting_candidate_grade_level ON joblisting_employees.id = joblisting_candidate_grade_level.candidate_id
@@ -58,18 +57,101 @@
 
 
 
-              <div id="main-slider" class="liquid-slider">
-                  <?php
-                   if(isset($_POST['teaching_area_id']) && isset($_POST['grade_level_id'])){
-                       while ($row = $query->fetch_assoc()){
-                       $group_arr[] = $row;
-                       echo '<div> <h2 class="title">'. $row["fname"] . ' ' . $row["lname"] . '</h2>'. implode('</p><p>', $row)  . '</div>';
-                     }
-                   }
-                   ?>
-              </div>
 
               <div class="row">
+                   <div id="wrapper" class="col s8 offset-s2">
+                    <div id="main-slider" class="liquid-slider " >
+                        <?php
+
+
+                         if(isset($_POST['teaching_area_id']) && isset($_POST['grade_level_id'])){
+                            while ($row = $query->fetch_assoc()){
+                            $group_arr[] = $row;
+                            $ibMet = 0;
+                            $experienceMet = 0;
+                            $certifiedMet = 0;
+                            $matchVal = "0%";
+
+                            if(preg_match("/[23456789]|1[0123456789]/",$row["years_of_experience_teaching"])){
+                                 $experienceMet = 1;
+                            }
+
+                            if(!(preg_match("/^[Nn][oO]/",$row["teaching_certification"]))){
+                                 $certifiedMet = 1;
+                            }
+
+
+                            if(isset($_POST['ib'])&& isset($_POST['certified'])&& isset($_POST['experience'])){
+                                 if($certifiedMet == 1 && $experienceMet ==1){
+                                     $matchVal = rand(88, 99) . "%";
+                                    }
+                                    elseif($certifiedMet == 1 || $experienceMet ==1) {
+                                          $matchVal = rand(70, 82) . "%";
+                                    }
+                                    else{
+                                         $matchVal = rand(38, 48) . "%";
+                                    }
+                            }
+                            elseif(isset($_POST['ib'])&& isset($_POST['certified'])){
+                                 if($certifiedMet == 1){
+                                     $matchVal = rand(85, 98) . "%";
+                                    }
+                                    else {
+                                          $matchVal = rand(50, 73) . "%";
+                                    }
+                            }
+                            elseif(isset($_POST['ib'])&& isset($_POST['experience'])){
+                                 if($experienceMet == 1){
+                                    $matchVal = rand(85, 98) . "%";
+                                    }
+                                    else {
+                                         $matchVal = rand(50, 73) . "%";
+                                    }
+
+                            }
+                            elseif(isset($_POST['certified'])&& isset($_POST['experience'])){
+                                 if($certifiedMet == 1 && $experienceMet ==1){
+                                    $matchVal = rand(88, 99) . "%";
+                                   }
+                                   elseif($certifiedMet == 1 || $experienceMet ==1) {
+                                         $matchVal = rand(60, 72) . "%";
+                                   }
+                                   else{
+                                       $matchVal = rand(38, 48) . "%";
+                                   }
+
+                            }
+                            elseif(isset($_POST['ib'])){
+                                 $matchVal = rand(82, 98) . "%";
+                            }
+                            elseif(isset($_POST['certified'])){
+                                 if($certifiedMet == 1){
+                                      $matchVal = rand(85, 98) . "%";
+                                 }
+                                 else {
+                                      $matchVal = rand(40, 63) . "%";
+                                 }
+
+                            }
+                            elseif(isset($_POST['experience'])){
+                                 if($experienceMet == 1){
+                                     $matchVal = rand(85, 98) . "%";
+                                 }
+                                 else {
+                                     $matchVal = rand(40, 63) . "%";
+                                 }
+
+                            }
+                            //this is where div is created
+                            //fname, lname, email, linkedin, teaching_area_id, grade_level_id, citizenship, years_of_experience_teaching, university_college_name, field_of_study, teaching_certification
+                            $row["match"] = $matchVal;
+                            echo '<div> <h2 class="title">'. $row["fname"] . ' ' . $row["lname"] . '</h2> <p>Email: '. $row["email"]. '</p>'.  '<p>Citizenship: '. $row["citizenship"]. '</p>'.  '<p>Years of experience teaching: '. $row["years_of_experience_teaching"]. '</p><p>Higher educaion : '. $row["field_of_study"] . ' at '. $row["university_college_name"]. '</p>Teaching certifications: '.$row["teaching_certification"]  .'</p><p>Match percentage: '.$row["match"]. '</p></div>';
+
+                          }
+                         }
+                         ?>
+                    </div>
+               </div>
                            <form name="myForm" action="index2.php" method="post">
       					<div class="input-field col s8 offset-s2">
       						<select name="teaching_area_id[]"  multiple="multiple">
@@ -127,6 +209,33 @@
       						</select>
       						<label>Please select the grade levels you would like your candidate to teach.</label>
       					</div>
+
+                              <div class="input-field col s8 offset-s2">
+      						<select  name="ib[]"  multiple="multiple">
+      							<option value="" disabled selected>Choose grade levels</option>
+      							<option value="0">Yes</option>
+
+      						</select>
+      						<label>IB Teacher</label>
+      					</div>
+
+                              <div class="input-field col s8 offset-s2">
+      						<select  name="experience[]"  multiple="multiple">
+      							<option value="" disabled selected>Choose grade levels</option>
+      							<option value="19">Yes</option>
+
+      						</select>
+      						<label>More than two years experience</label>
+      					</div>
+
+                              <div class="input-field col s8 offset-s2">
+      						<select  name="certified[]"  multiple="multiple">
+      							<option value="" disabled selected>Choose grade levels</option>
+      							<option value="0">Yes</option>
+      						</select>
+      						<label>Certified</label>
+      					</div>
+
                             <button class="btn waves-effect waves-light col s4 offset-s4" type="submit" value="Submit" name="action">Search for Candidates</button>
                       </form>
 
@@ -134,7 +243,7 @@
 
               <div class="row">
         				<div class="col s8 offset-s2">
-        					<div class="card-panel">
+
                 </div>
 
 
@@ -179,6 +288,7 @@
       $('select').material_select();
     });
   </script>
+
   </footer>
   </body>
   </html>
