@@ -14,7 +14,7 @@ $db ='id171775_tla';
            if(isset($_POST['teaching_area_id']) && isset($_POST['grade_level_id'])){
              $chkArrCSV = implode(',',$chkArr);
              $chkArrCSV2 = implode(',',$chkArr2);
-             $query = mysqli_query($connection, "SELECT fname, lname, email, linkedin, teaching_area_id, grade_level_id, citizenship, years_of_experience_teaching, university_college_name, field_of_study, teaching_certification
+             $query = mysqli_query($connection, "SELECT joblisting_employees.id eid, fname, lname, email, linkedin, teaching_area_id, grade_level_id, citizenship, years_of_experience_teaching, university_college_name, field_of_study, teaching_certification
                  FROM joblisting_employees
                  INNER JOIN joblisting_candidate_teaching_areas ON joblisting_employees.id = joblisting_candidate_teaching_areas.candidate_id
                  INNER JOIN joblisting_candidate_grade_level ON joblisting_employees.id = joblisting_candidate_grade_level.candidate_id
@@ -142,10 +142,27 @@ $db ='id171775_tla';
                                  }
 
                             }
+
+
+                            $query2 = mysqli_query($connection, "SELECT teaching_area_id
+                               FROM joblisting_candidate_teaching_areas
+                               WHERE candidate_id =" . $row["eid"]."");
+
+                               while( $row2 = $query2->fetch_assoc()){
+                                   $new_array[] = $row2; // Inside while loop
+                               }
+
+
                             //this is where div is created
                             //fname, lname, email, linkedin, teaching_area_id, grade_level_id, citizenship, years_of_experience_teaching, university_college_name, field_of_study, teaching_certification
                             $row["match"] = $matchVal;
-                            echo '<div> <h2 class="title">'. $row["fname"] . ' ' . $row["lname"] . '</h2> <p>Email: '. $row["email"]. '</p>'.  '<p>Citizenship: '. $row["citizenship"]. '</p>'.  '<p>Years of experience teaching: '. $row["years_of_experience_teaching"]. '</p><p>Higher educaion : '. $row["field_of_study"] . ' at '. $row["university_college_name"]. '</p>Teaching certifications: '.$row["teaching_certification"]  .'</p><p>Match percentage: '.$row["match"]. '</p></div>';
+                            echo '<div> <h2 class="title">'. $row["fname"] . ' ' . $row["lname"] . '</h2>';
+
+                            foreach($new_array as $array)
+                            {
+                                 echo "<p>Teaching area: " . $array['teaching_area_id']. "</p>";
+                            }
+                            echo' <p>Email: '. $row["email"]. '</p>'.  '<p>Citizenship: '. $row["citizenship"]. '</p>'.  '<p>Years of experience teaching: '. $row["years_of_experience_teaching"]. '</p><p>Higher educaion : '. $row["field_of_study"] . ' at '. $row["university_college_name"]. '</p>Teaching certifications: '.$row["teaching_certification"]  .'</p><p>Match percentage: '.$row["match"]. '</p></div>';
 
                           }
                          }
