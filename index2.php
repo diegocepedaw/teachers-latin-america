@@ -144,7 +144,7 @@ $db ='id171775_tla';
                             }
 
 
-                            $query2 = mysqli_query($connection, "SELECT teaching_area_id
+                            $query2 = mysqli_query($connection, "SELECT DISTINCT teaching_area_id
                                FROM joblisting_candidate_teaching_areas
                                WHERE candidate_id =" . $row["eid"]."");
 
