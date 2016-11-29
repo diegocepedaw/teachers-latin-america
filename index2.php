@@ -144,7 +144,7 @@ $db ='id171775_tla';
                             }
 
 
-                            $query2 = mysqli_query($connection, "SELECT DISTINCT teaching_area_id
+                            $query2 = mysqli_query($connection, "SELECT teaching_area_id
                                FROM joblisting_candidate_teaching_areas
                                WHERE candidate_id =" . $row["eid"]."");
 
@@ -163,6 +163,9 @@ $db ='id171775_tla';
                                  echo "<p>Teaching area: " . $array['teaching_area_id']. "</p>";
                             }
                             echo' <p>Email: '. $row["email"]. '</p>'.  '<p>Citizenship: '. $row["citizenship"]. '</p>'.  '<p>Years of experience teaching: '. $row["years_of_experience_teaching"]. '</p><p>Higher educaion : '. $row["field_of_study"] . ' at '. $row["university_college_name"]. '</p>Teaching certifications: '.$row["teaching_certification"]  .'</p><p>Match percentage: '.$row["match"]. '</p></div>';
+
+                            unset($new_array);
+                            $new_array = array();
 
                           }
                          }
