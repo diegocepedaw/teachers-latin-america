@@ -59,17 +59,21 @@ $db ='id171775_tla';
           <nav class="green darken-3">
             <div class="container">
               <div class="nav-wrapper">
+
                <a href="#" class="brand-logo center"><img src="./images/tla-logo.png"></a>
+
               </div>
             </div>
           </nav>
         </div>
+
 
       <main>
         <div class="container">
             <div class="row">
               <div class="section">
                <div class="col 8 offset-s2">
+
                     <div id="main-slider" class="liquid-slider " >
                         <?php
                          if(isset($_POST['teaching_area_id']) && isset($_POST['grade_level_id'])){
@@ -178,6 +182,7 @@ $db ='id171775_tla';
                          }
                          ?>
                     </div>
+
                </div>
               </div>
 
@@ -299,6 +304,7 @@ $db ='id171775_tla';
         <a class="grey-text text-lighten-4 right" href="#!">Made by MITR Group 7</a>
         </div>
     </div>
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
