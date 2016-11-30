@@ -287,15 +287,12 @@ $db ='id171775_tla';
 
     <footer class="page-footer green darken-2">
         <div class="container">
-
-
-
             <div class="row">
             © 2016 Teacher Latin America
             <a class="grey-text text-lighten-4 right" href="#!">Made by MITR Group 7</a>
             </div>
         </div>
-      </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.4/jquery.touchSwipe.min.js"></script>
