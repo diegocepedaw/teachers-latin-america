@@ -50,7 +50,7 @@ $db ='id171775_tla';
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.0.0/animate.min.css">
         <link rel="stylesheet" href="./css/liquid-slider.css">
 
-        <title>Liquid Slider : The Last Responsive Content Slider You'll Ever Need</title>
+        <title>Candidate Match</title>
       </head>
       <body class="no-js green lighten-5">
         <div class="navbar-fixed">
