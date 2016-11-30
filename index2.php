@@ -63,6 +63,7 @@ $db ='id171775_tla';
           </nav>
         </div>
 
+        <main>
         <div class="container">
             <div class="row">
               <div class="section">
@@ -179,6 +180,7 @@ $db ='id171775_tla';
                 </div>
               </div>
 
+
                 <div class="section">
                   <div class="col s8 offset-s2">
                   <form name="myForm" action="index2.php" method="post" class="card-panel">
@@ -279,6 +281,7 @@ $db ='id171775_tla';
               </div>
       		</div>
       </div>
+    </main>
 
 
 
