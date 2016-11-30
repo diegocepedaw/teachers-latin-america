@@ -2,10 +2,9 @@
 
 <?php
 $host = 'localhost';
-  $user = 'id171775_root';
-  $password = 'teach';
-  $db ='id171775_tla';
-
+$user = 'id171775_root';
+$password = 'teach';
+$db ='id171775_tla';
 
 
 
@@ -168,7 +167,7 @@ $host = 'localhost';
                             //this is where div is created
                             //fname, lname, email, linkedin, teaching_area_id, grade_level_id, citizenship, years_of_experience_teaching, university_college_name, field_of_study, teaching_certification
                             $row["match"] = $matchVal;
-                            echo '<div> <h2 class="title">'. $row["fname"] . ' ' . $row["lname"] . '</h2>'. '<h2><strong style="color:#4286f4">'.$row["match"].'</strong> Match </h2><p>Teaching areas: </p>';
+                            echo '<div> <h2 class="title">'. $row["fname"] . ' ' . $row["lname"] . '</h2>'. '<h2><strong style="color:#4286f4">'.$row["match"].'</strong> Match </h2>';
 
                             foreach($new_array as $array)
                             {

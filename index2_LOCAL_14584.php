@@ -2,10 +2,9 @@
 
 <?php
 $host = 'localhost';
-  $user = 'id171775_root';
-  $password = 'teach';
-  $db ='id171775_tla';
-
+$user = 'id171775_root';
+$password = 'teach';
+$db ='id171775_tla';
 
 
 
@@ -60,21 +59,17 @@ $host = 'localhost';
           <nav class="green darken-3">
             <div class="container">
               <div class="nav-wrapper">
-
                <a href="#" class="brand-logo center"><img src="./images/tla-logo.png"></a>
-
               </div>
             </div>
           </nav>
         </div>
-
 
       <main>
         <div class="container">
             <div class="row">
               <div class="section">
                <div class="col 8 offset-s2">
-
                     <div id="main-slider" class="liquid-slider " >
                         <?php
                          if(isset($_POST['teaching_area_id']) && isset($_POST['grade_level_id'])){
@@ -168,7 +163,7 @@ $host = 'localhost';
                             //this is where div is created
                             //fname, lname, email, linkedin, teaching_area_id, grade_level_id, citizenship, years_of_experience_teaching, university_college_name, field_of_study, teaching_certification
                             $row["match"] = $matchVal;
-                            echo '<div> <h2 class="title">'. $row["fname"] . ' ' . $row["lname"] . '</h2>'. '<h2><strong style="color:#4286f4">'.$row["match"].'</strong> Match </h2><p>Teaching areas: </p>';
+                            echo '<div> <h2 class="title">'. $row["fname"] . ' ' . $row["lname"] . '</h2>'. '<h2><strong style="color:#4286f4">'.$row["match"].'</strong> Match </h2>';
 
                             foreach($new_array as $array)
                             {
@@ -183,7 +178,6 @@ $host = 'localhost';
                          }
                          ?>
                     </div>
-
                </div>
               </div>
 
@@ -305,7 +299,6 @@ $host = 'localhost';
         <a class="grey-text text-lighten-4 right" href="#!">Made by MITR Group 7</a>
         </div>
     </div>
-
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
