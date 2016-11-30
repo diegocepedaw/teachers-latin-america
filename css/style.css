@@ -1,0 +1,27 @@
+.full {
+	width: 100%;
+}
+
+.info {
+	margin-top: 20px;
+	width: 100%;
+}
+
+
+.top {
+	margin-top: 40px;
+}
+
+.bullet {
+	list-style-type: disc;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+main {
+    flex: 1 0 auto;
+  }
