@@ -2,10 +2,9 @@
 
 <?php
 $host = 'localhost';
-  $user = 'id171775_root';
-  $password = 'teach';
-  $db ='id171775_tla';
-
+$user = 'root';
+$password = 'password';
+$db ='tla';
 
 
 
@@ -73,7 +72,7 @@ $host = 'localhost';
         <div class="container">
             <div class="row">
               <div class="section">
-               <div class="col 8 offset-s2">
+               <div class="col 8 offset-s3">
 
                     <div id="main-slider" class="liquid-slider " >
                         <?php
@@ -189,7 +188,7 @@ $host = 'localhost';
 
                <div class="section">
                   <div class="col s8 offset-s2">
-                  <form name="myForm" action="index2.php" method="post" class="card-panel">
+                  <form name="myForm" action="index2.p" method="post" class="card-panel">
                      <div class="row">
                                        <div class="input-field col s12">
                                             <select name="teaching_area_id[]"  multiple="multiple">
